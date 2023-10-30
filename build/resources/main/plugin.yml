@@ -1,0 +1,14 @@
+name: GenshinAttributesBackpack
+main: org.qiuhua.genshinattributesbackpack.Main
+version: 2.1.2
+api-version: 1.13
+depend:
+  - PlaceholderAPI
+  - Adyeshach
+  - MythicMobs
+softdepend:
+  - AttributeSystem
+commands:
+  GenshinAttributesBackpack:
+    description: "主指令"
+    usage: /<command>

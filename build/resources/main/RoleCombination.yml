@@ -1,0 +1,54 @@
+#套装id  这个id可以随便改
+Combination1:
+  #角色卡的设置
+  Role:
+    slot: 10
+    condition: "槽位: 角色卡"
+  #武器的设置
+  Arms:
+    slot: 11
+    condition: "槽位: 武器"
+  #圣遗物的槽位配置
+  Artifacts:
+    Slot1:
+      slot: 12
+      condition: "圣遗物: 生之花"
+    Slot2:
+      slot: 13
+      condition: "圣遗物: 死之羽"
+    Slot3:
+      slot: 14
+      condition: "圣遗物: 时之沙"
+    Slot4:
+      slot: 15
+      condition: "圣遗物: 空之杯"
+    Slot5:
+      slot: 16
+      condition: "圣遗物: 理之冠"
+
+Combination2:
+  #角色卡的设置
+  Role:
+    slot: 19
+    condition: "槽位: 角色卡"
+  #武器的设置
+  Arms:
+    slot: 20
+    condition: "槽位: 武器"
+  #圣遗物的槽位配置
+  Artifacts:
+    Slot1:
+      slot: 21
+      condition: "圣遗物: 生之花"
+    Slot2:
+      slot: 22
+      condition: "圣遗物: 死之羽"
+    Slot3:
+      slot: 23
+      condition: "圣遗物: 时之沙"
+    Slot4:
+      slot: 24
+      condition: "圣遗物: 空之杯"
+    Slot5:
+      slot: 25
+      condition: "圣遗物: 理之冠"

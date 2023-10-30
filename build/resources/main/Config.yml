@@ -1,0 +1,55 @@
+#颜色代码要用 §
+Debug: false
+Gui:
+  title: "装备界面"
+FightingState: 10  #战斗状态时间 秒
+SwitchTimeCd: 1000 #切换套装间隔 毫秒
+AutoSave: 15 #自动保存单位分钟
+ComboMax: 3 #最大连击数
+ComboIntervalMin: 10 #最小连击间隔
+ComboIntervalMax: 1000 #最大连击间隔
+ArmsSlot:
+  slot: 8 #切换套装时提供给玩家的武器在什么槽位  只能设置快捷栏0-8
+  #这个物品是用在占住上面那个槽位的
+  item:
+    name: "§c这是一个占位物品"   #物品显示名称
+    type: "PAPER"   #物品的材质
+    customModelData: -1  #修改物品材质为指定模型  -1不修改
+    loreAdd: true  #开启后 会把下面的lore也添加进玩家槽位的武器上  不开启则为占位武器才有
+    lore:
+      - ""
+      - "§6此槽位物品无法移动"
+      - "§6此槽位物品无法丢弃"
+      - "§6此槽位物品无法出售"
+Role:
+  condition: "角色: " #判断角色信息的lore  冒号后面的部分会存储成角色名称
+  Papi:
+    无角色: "%img_roledefault%"
+    空: "%img_rolekon%"
+    荧: "%img_rolelxz%"
+
+Arms:
+  condition: "武器: "
+  单手剑:
+    - "荧"
+
+Suits:
+  condition: "系列: "
+ComboPapi:
+  R: "%img_combor%"
+  L: "%img_combol%"
+  SR: "%img_combosr%"
+  SL: "%img_combosl%"
+  Divide: "%img_combodivide%"  #分割
+  Default: "%img_combodefault%"    #占位
+
+
+#数据库有条件建议使用mysql
+Sql:
+  type: sqlite   #sqlite或者mysql   mysql才需要配置下面的部分
+  dataBaseName: GenshinAttributesBackpack   #数据库名称
+  username: root  #账户名称
+  password: root  #密码
+  port: 3306  #端口
+  ip: 127.0.0.1  #ip
+
