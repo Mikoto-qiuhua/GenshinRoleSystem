@@ -15,6 +15,7 @@ import org.qiuhua.genshinattributesbackpack.armsfollow.LockingArms;
 import org.qiuhua.genshinattributesbackpack.combination.Switch;
 import org.qiuhua.genshinattributesbackpack.configfile.MessageConfig;
 import org.qiuhua.genshinattributesbackpack.configfile.RoleCombinationConfig;
+import org.qiuhua.genshinattributesbackpack.data.PlayerData;
 import org.qiuhua.genshinattributesbackpack.data.PlayerDataController;
 import org.qiuhua.genshinattributesbackpack.fightingstate.FightingState;
 import org.qiuhua.genshinattributesbackpack.mousecombo.Combo;
@@ -33,12 +34,15 @@ public class PlayerListener implements Listener {
                 if (Main.sqlType.equalsIgnoreCase("mysql")) {
                     MysqlDataControl.loadPlayerData(player.getUniqueId());
                 }
-                //重新给予属性
-                String combinationId = PlayerDataController.getPlayerData(player).getCombinationId();
-                if(combinationId == null){
-                    combinationId = RoleCombinationConfig.getDefaultCombinationId();
+                //重新给予属性 如果没有data则不执行
+                PlayerData data = PlayerDataController.getAllPlayerData().get(player.getUniqueId());
+                if(data != null){
+                    String combinationId = data.getCombinationId();
+                    if(combinationId == null){
+                        combinationId = RoleCombinationConfig.getDefaultCombinationId();
+                    }
+                    Switch.addAttribute(combinationId, player);
                 }
-                Switch.addAttribute(combinationId, player);
             }
         },40L);
         //////////////////////////////////////////////////////

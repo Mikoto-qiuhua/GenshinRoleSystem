@@ -1,6 +1,6 @@
 name: GenshinAttributesBackpack
 main: org.qiuhua.genshinattributesbackpack.Main
-version: 2.1.2
+version: 2.2.0
 api-version: 1.13
 depend:
   - PlaceholderAPI

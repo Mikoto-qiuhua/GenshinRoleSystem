@@ -2,6 +2,8 @@ package org.qiuhua.genshinattributesbackpack.attribute;
 
 import com.skillw.attsystem.api.AttrAPI;
 import com.skillw.attsystem.api.compiled.CompiledData;
+import com.skillw.pouvoir.Pouvoir;
+import com.skillw.pouvoir.api.PouvoirAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -28,6 +30,7 @@ public class AttributeControl {
                     itemList.add(item);
                 }
             }
+
             CompiledData attribute = AttrAPI.readItems(itemList, player, null);
             AttrAPI.addCompiledData(player, "GenshinAttributes", attribute);
         }finally {

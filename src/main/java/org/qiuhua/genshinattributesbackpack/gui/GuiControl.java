@@ -16,6 +16,7 @@ import org.qiuhua.genshinattributesbackpack.configfile.RoleCombinationConfig;
 import org.qiuhua.genshinattributesbackpack.configfile.ToolConfig;
 import org.qiuhua.genshinattributesbackpack.data.PlayerData;
 import org.qiuhua.genshinattributesbackpack.data.PlayerDataController;
+import org.qiuhua.genshinattributesbackpack.sql.mysql.MysqlDataControl;
 
 import java.util.List;
 import java.util.Map;
@@ -132,7 +133,15 @@ public class GuiControl {
     //加载界面物品数据
     public static void loadGuiItem(Inventory inventory, Player player){
         //获取玩家数据
-        PlayerData data = PlayerDataController.getPlayerData(player);
+        PlayerData data = PlayerDataController.getAllPlayerData().get(player.getUniqueId());
+        //如果玩家数据为null 那就尝试从数据库加载
+        if(data == null){
+            Bukkit.getLogger().warning("UUID => " + player.getUniqueId() + " 数据异常 data为null");
+            Bukkit.getLogger().warning("尝试从数据库加载");
+            MysqlDataControl.loadPlayerData(player.getUniqueId());
+            //重新获取玩家数据
+            data = PlayerDataController.getPlayerData(player);
+        }
         //获取装备map
         Map<Integer, ItemStack> map = data.getEquipmentMap();
         for(Integer slot : map.keySet()){

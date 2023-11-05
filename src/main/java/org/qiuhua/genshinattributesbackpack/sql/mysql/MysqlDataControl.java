@@ -20,39 +20,41 @@ public class MysqlDataControl {
 
     //保存指定玩家数据
     public static void addPlayerData(UUID uuid) {
+        PlayerData data = PlayerDataController.getAllPlayerData().get(uuid);
+
+        if(data == null){
+            Bukkit.getLogger().warning("UUID => " + uuid + " 数据异常 data为null");
+            Bukkit.getLogger().warning("已跳过保存");
+            return;
+        }
         MysqlControl.isValid();
         MysqlControl.dropTable(uuid);
         MysqlControl.createTable(uuid);
-        PlayerData data = PlayerDataController.getPlayerData(uuid);
+        if (DefaultConfig.getBoolean("Debug")) {
+            Bukkit.getLogger().info("======[GenshinAttributesBackpack]======");
+            Bukkit.getLogger().info("本次动作 => 写入玩家数据");
+            Bukkit.getLogger().info("UUID => " + uuid);
+        }
+        //保存装备
         Map<Integer, ItemStack> map = data.getEquipmentMap();
-        if (!map.isEmpty()) {
-            if (DefaultConfig.getBoolean("Debug")) {
-                Bukkit.getLogger().info("======[GenshinAttributesBackpack]======");
-                Bukkit.getLogger().info("本次动作 => 写入玩家数据");
-                Bukkit.getLogger().info("UUID => " + uuid);
-            }
-
-            String item;
+        if(!map.isEmpty()){
             for (Integer slot : map.keySet()) {
-                item = itemStackSave(map.get(slot));
+                String item = itemStackSave(map.get(slot));
                 MysqlControl.addItemSlot(uuid, slot, item);
             }
-
-            Map<String, Double> roleMap = data.getRoleHealthList();
+        }
+        //保存血量信息
+        Map<String, Double> roleMap = data.getRoleHealthList();
             if (!roleMap.isEmpty()) {
-
                 for (String s : roleMap.keySet()) {
                     Double h = roleMap.get(s);
                     MysqlControl.addRoleHealth(uuid, s, h);
                 }
-
-                if (DefaultConfig.getBoolean("Debug")) {
-                    Bukkit.getLogger().info("========================================");
-                }
-
             }
-            Bukkit.getLogger().info("写入玩家数据UUID => " + uuid);
+        if (DefaultConfig.getBoolean("Debug")) {
+            Bukkit.getLogger().info("========================================");
         }
+
     }
 
 
@@ -69,16 +71,19 @@ public class MysqlDataControl {
 
     //加载一个指定玩家数据
     public static void loadPlayerData(UUID uuid) {
+        if(Bukkit.getPlayer(uuid) == null){
+            return;
+        }
         MysqlControl.isValid();
         PlayerData data = PlayerDataController.getPlayerData(uuid);
-        Map<Integer, ItemStack> equipmentMap = data.getEquipmentMap();
         try {
+            //创建表格 如果没有这个表 就会创建
             MysqlControl.createTable(uuid);
             if (DefaultConfig.getBoolean("Debug")) {
                 Bukkit.getLogger().info("======[GenshinAttributesBackpack]======");
                 Bukkit.getLogger().info("本次动作 => 读取玩家数据");
             }
-
+            Map<Integer, ItemStack> equipmentMap = data.getEquipmentMap();
             Map<Integer, String> sqlItemMap = MysqlControl.getItemSlot(uuid);
 
             for (Integer slot : sqlItemMap.keySet()) {
@@ -105,11 +110,12 @@ public class MysqlDataControl {
             if (DefaultConfig.getBoolean("Debug")) {
                 Bukkit.getLogger().info("========================================");
             }
-            Bukkit.getLogger().info("读取玩家数据UUID => " + uuid);
 
         } catch (Exception var9) {
+            Main.getMainPlugin().getLogger().severe("读取数据失败 UUID -> " + uuid);
             throw new RuntimeException(var9);
         }
+        Bukkit.getLogger().info("读取数据完成 UUID -> " + uuid);
     }
 
     public static String itemStackSave(ItemStack itemStack) {

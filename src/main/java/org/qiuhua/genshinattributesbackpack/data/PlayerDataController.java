@@ -39,7 +39,7 @@ public class PlayerDataController {
 
     public static void removePlayerData(UUID uuid){
         allMaster.remove(uuid);
-        Bukkit.getLogger().info("已清除当前服务器玩家数据UUID => " + uuid);
+//        Bukkit.getLogger().info("已清除当前服务器玩家数据UUID => " + uuid);
     }
 
 

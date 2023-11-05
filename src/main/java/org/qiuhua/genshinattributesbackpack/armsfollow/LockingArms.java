@@ -117,8 +117,7 @@ public class LockingArms {
         Player player = event.getPlayer();
         //如果切换后的槽位是武器槽位 就取消武器悬浮
         if(isArmsSlot(newSlot)){
-            ItemStack item = new ItemStack(Material.AIR);
-            ArmorStandController.spawnArmorStand(player, item);
+            ArmorStandController.deSpawnArmorStand(player);
             return;
         }
         if(isArmsSlot(previousSlot)){
