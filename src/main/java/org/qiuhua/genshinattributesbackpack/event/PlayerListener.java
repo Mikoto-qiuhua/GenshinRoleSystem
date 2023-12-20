@@ -1,6 +1,5 @@
 package org.qiuhua.genshinattributesbackpack.event;
 
-import io.lumine.mythic.bukkit.events.MythicMechanicLoadEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;

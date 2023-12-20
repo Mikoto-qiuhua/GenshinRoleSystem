@@ -183,8 +183,13 @@ public class Switch {
         SuitsAction.main(player, "star");
         //更新属性
         AttrAPI.updateSync(player);
-        //恢复生命值
-        getRoleHealth(player);
+        try{
+            //恢复生命值
+            getRoleHealth(player);
+        }catch (IllegalArgumentException e){
+            player.setHealth(20);
+            Bukkit.getLogger().warning(player.getDisplayName() +  " 切换角色出现异常 已恢复为20血");
+        }
         //给予武器
         LockingArms.addArmsSlot(player);
         //添加物品漂浮 自动按当前标签的物品添加漂浮物
@@ -210,8 +215,13 @@ public class Switch {
         SuitsAction.main(player, "star");
         //更新属性
         AttrAPI.updateSync(player);
-        //恢复生命值
-        getRoleHealth(player);
+        try{
+            //恢复生命值
+            getRoleHealth(player);
+        }catch (IllegalArgumentException e){
+            player.setHealth(20);
+            Bukkit.getLogger().warning(player.getDisplayName() +  " 切换角色出现异常 已恢复为20血");
+        }
         //给予武器
         LockingArms.addArmsSlot(player);
         //添加物品漂浮 自动按当前标签的物品添加漂浮物
