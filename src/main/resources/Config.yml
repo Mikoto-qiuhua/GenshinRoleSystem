@@ -1,5 +1,6 @@
 #颜色代码要用 §
 Debug: false
+Key: ""
 Gui:
   title: "装备界面"
 FightingState: 10  #战斗状态时间 秒

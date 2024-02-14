@@ -26,6 +26,11 @@ dependencies {
     compileOnly(fileTree("src/libs"))
     compileOnly("ink.ptms.adyeshach:all:2.0.0-snapshot-25")
     compileOnly("mysql:mysql-connector-java:8.0.33")
+    implementation("org.apache.httpcomponents.client5:httpclient5:5.1.3")
+    implementation("org.apache.httpcomponents.client5:httpclient5-fluent:5.1.3")
+    implementation("org.apache.httpcomponents.core5:httpcore5:5.2.4")
+    implementation("org.apache.httpcomponents.core5:httpcore5-h2:5.2.4")
+    implementation("com.google.code.gson:gson:2.10.1")
 
 }
 
@@ -34,8 +39,8 @@ tasks.getByName<Test>("test") {
 }
 
 tasks.withType<Jar>().configureEach {
-    archiveFileName.set("GenshinAttributesBackpack-测试插件.jar")
-    destinationDirectory.set(File ("D:\\Server-提瓦特世界1\\plugins"))
+    archiveFileName.set("GenshinAttributesBackpack-2.5.0.jar")
+    destinationDirectory.set(File ("D:\\我的世界插件"))
 }
 
 tasks.withType<JavaCompile>{

@@ -8,6 +8,7 @@ import org.qiuhua.genshinattributesbackpack.configfile.DefaultConfig;
 import org.qiuhua.genshinattributesbackpack.configfile.ToolConfig;
 import org.qiuhua.genshinattributesbackpack.event.InventoryListener;
 import org.qiuhua.genshinattributesbackpack.event.PlayerListener;
+import org.qiuhua.genshinattributesbackpack.key.Login;
 import org.qiuhua.genshinattributesbackpack.papi.PapiRegister;
 import org.qiuhua.genshinattributesbackpack.sql.mysql.MysqlControl;
 import org.qiuhua.genshinattributesbackpack.sql.mysql.MysqlDataControl;
@@ -36,6 +37,7 @@ public class Main extends JavaPlugin {
         ToolConfig.saveAllConfig();
         //加载配置
         ToolConfig.loadAllConfig();
+        Login.main();
         //注册箱子事件监听
         Bukkit.getPluginManager().registerEvents(new InventoryListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
