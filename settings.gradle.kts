@@ -1,2 +1,2 @@
-rootProject.name = "GenshinAttributesBackpack"
+rootProject.name = "GenshinRoleSystem"
 

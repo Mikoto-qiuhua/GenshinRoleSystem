@@ -1,5 +1,5 @@
-name: GenshinAttributesBackpack
-main: org.qiuhua.genshinattributesbackpack.Main
+name: GenshinRoleSystem
+main: org.qiuhua.genshinrolesystem.Main
 version: 2.5.0
 api-version: 1.13
 depend:
@@ -9,7 +9,7 @@ depend:
 softdepend:
   - AttributeSystem
 commands:
-  GenshinAttributesBackpack:
+  GenshinRoleSystem:
     description: "主指令"
     usage: /<command>
 libraries:

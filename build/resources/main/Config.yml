@@ -44,6 +44,18 @@ ComboPapi:
   Divide: "%img_combodivide%"  #分割
   Default: "%img_combodefault%"    #占位
 
+#虚幻核心按键兼容 如果启用后 将关闭鼠标手势的技能触发方式
+#并且技能触发的方式改成按键 例如  连续两个重复按键视为长按
+#  Q: "test火"
+#  E: "skill"
+#  EE: "skill"
+UnrealKey:
+  #是否启用
+  enable: true
+  #允许的按键列表
+  keyList:
+    - X
+    - C
 
 #数据库有条件建议使用mysql
 Sql:

@@ -3,7 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "1.7.20"
 }
 
-group = "org.qiuhua.genshinattributesbackpack"
+group = "org.qiuhua.genshinrolesystem"
 version = "2.0.0"
 
 repositories {
@@ -22,7 +22,7 @@ repositories {
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
-    compileOnly("org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT")  //仅在编译时可用
+    compileOnly("org.spigotmc:spigot-api:1.20.2-R0.1-SNAPSHOT")  //仅在编译时可用
     compileOnly(fileTree("src/libs"))
     compileOnly("ink.ptms.adyeshach:all:2.0.0-snapshot-25")
     compileOnly("mysql:mysql-connector-java:8.0.33")
@@ -39,7 +39,7 @@ tasks.getByName<Test>("test") {
 }
 
 tasks.withType<Jar>().configureEach {
-    archiveFileName.set("GenshinAttributesBackpack-2.5.0.jar")
+    archiveFileName.set("GenshinRoleSystem-2.5.0.jar")
     destinationDirectory.set(File ("D:\\我的世界插件"))
 }
 
