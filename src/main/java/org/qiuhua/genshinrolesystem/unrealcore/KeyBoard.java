@@ -28,12 +28,15 @@ public class KeyBoard {
         if(!keyList.contains(keyName)){
             return;
         }
-
         // 获取玩家主手物品
         ItemStack item = player.getInventory().getItemInMainHand();
         //获取玩家数据
         PlayerData data = PlayerDataController.getPlayerData(player);
-        if(item.getType() == Material.AIR || item.getItemMeta() == null) return;
+        if(item.getType() == Material.AIR || item.getItemMeta() == null) {
+            player.sendMessage(MessageConfig.getString("needArms"));
+            data.setLongPress(false);
+            return;
+        }
         //如果用来交互的武器是占位武器 或者不是指定武器
         if(LockingArms.getPlaceholderArms(player).isSimilar(item) || !LockingArms.isArmsContrast(player ,item)){
             player.sendMessage(MessageConfig.getString("needArms"));
@@ -59,6 +62,7 @@ public class KeyBoard {
         //获取技能
         String skill = ComboSkillConfig.getString(roleId + "." + keyName);
         if(skill == null || skill.equals("")){
+            data.setLongPress(false);
             return;
         }
         //释放
