@@ -4,6 +4,7 @@ import ink.ptms.adyeshach.core.entity.EntityInstance;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class PlayerData {
 
@@ -28,8 +29,8 @@ public class PlayerData {
         this.RoleId = roleId;
     }
 
-    //装备列表
-    private final Map<Integer, ItemStack> equipmentList = new HashMap<>();
+    //装备列表   <需要存储>
+    private final ConcurrentHashMap<Integer, ItemStack> equipmentList = new ConcurrentHashMap<>();
     public void putEquipmentList (Integer slot, ItemStack item)
     {
         this.equipmentList.put(slot, item);
@@ -38,7 +39,7 @@ public class PlayerData {
     {
         return this.equipmentList.get(slot);
     }
-    public Map<Integer, ItemStack> getEquipmentMap()
+    public ConcurrentHashMap<Integer, ItemStack> getEquipmentMap()
     {
         return this.equipmentList;
     }
@@ -48,7 +49,7 @@ public class PlayerData {
     }
 
     //玩家身上的套装标签和数量
-    private final Map<String, Integer> equipmentTagAndNumberList = new HashMap<>();
+    private final ConcurrentHashMap<String, Integer> equipmentTagAndNumberList = new ConcurrentHashMap<>();
     public void putEquipmentTagAndNumber(String tag, Integer number){
         if(this.equipmentTagAndNumberList.containsKey(tag)){
             Integer i = this.equipmentTagAndNumberList.get(tag);
@@ -76,8 +77,8 @@ public class PlayerData {
         this.combinationId = combinationId;
     }
 
-    //玩家的各个角色血量
-    private final Map<String, Double> roleHealthList = new HashMap<>();
+    //玩家的各个角色血量  <需要存储>
+    private final ConcurrentHashMap<String, Double> roleHealthList = new ConcurrentHashMap<>();
     public void putRoleHealth(String role, Double health){
         this.roleHealthList.put(role, health);
     }
@@ -143,7 +144,7 @@ public class PlayerData {
         return this.entityArmorStand;
     }
 
-    //玩家是否长按了
+    //玩家是否长按了 虚幻核心按键监听长按
     Boolean isLongPress = false;
     public void setLongPress(Boolean a){
         this.isLongPress = a;
@@ -152,7 +153,6 @@ public class PlayerData {
         return  this.isLongPress;
     }
 
-    //玩家当前的按键状态
 
 
 }

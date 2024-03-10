@@ -7,6 +7,7 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class MysqlControl {
     private static Connection connection;
@@ -115,7 +116,7 @@ public class MysqlControl {
     }
 
     public static Map<Integer, String> getItemSlot(UUID uuid) {
-        Map<Integer, String> map = new HashMap();
+        ConcurrentHashMap<Integer, String> map = new ConcurrentHashMap();
         String sql = "select * from " + getTableName(uuid) + ";";
 
         try {
@@ -134,7 +135,7 @@ public class MysqlControl {
     }
 
     public static Map<String, Double> getRoleHealth(UUID uuid) {
-        Map<String, Double> map = new HashMap();
+        ConcurrentHashMap<String, Double> map = new ConcurrentHashMap();
         String sql = "select * from " + getTableName(uuid) + ";";
 
         try {

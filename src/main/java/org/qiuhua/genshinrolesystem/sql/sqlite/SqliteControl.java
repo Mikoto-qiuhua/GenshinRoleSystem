@@ -5,6 +5,7 @@ import org.qiuhua.genshinrolesystem.Main;
 import java.io.File;
 import java.sql.*;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class SqliteControl {
     private static String dbPath;
@@ -87,7 +88,7 @@ public class SqliteControl {
 
     public static Map<Integer, String> selectAll(UUID uuid) {
         String sql = "select * from " + getTableName(uuid) + ";";
-        Map<Integer, String> map = new HashMap();
+        ConcurrentHashMap<Integer, String> map = new ConcurrentHashMap();
 
         try {
             Statement statement = connection.createStatement();

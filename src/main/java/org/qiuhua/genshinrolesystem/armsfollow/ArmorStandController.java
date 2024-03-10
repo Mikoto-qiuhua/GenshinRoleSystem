@@ -15,12 +15,13 @@ import org.qiuhua.genshinrolesystem.data.PlayerDataController;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ArmorStandController {
 
 
     //记录了全部武器漂浮盔甲架
-    private static final Map<UUID, EntityInstance> allArmorStand = new HashMap<>();
+    private static final ConcurrentHashMap<UUID, EntityInstance> allArmorStand = new ConcurrentHashMap<>();
 
     //
     private static BukkitTask task = Bukkit.getScheduler().runTaskTimerAsynchronously(Main.getMainPlugin(), ArmorStandController::asyncUpdateArmorStand, 0L, 2L);

@@ -5,11 +5,12 @@ import org.bukkit.entity.Player;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class PlayerDataController {
 
     //获取一个玩家数据  如果没有 则创建
-    private static final Map<UUID, PlayerData> allMaster = new HashMap<>();
+    private static final ConcurrentHashMap<UUID, PlayerData> allMaster = new ConcurrentHashMap<>();
     public static PlayerData getPlayerData(Player player){
         UUID uuid = player.getUniqueId();
         if(!allMaster.containsKey(uuid)){
