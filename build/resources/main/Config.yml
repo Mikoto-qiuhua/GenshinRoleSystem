@@ -60,7 +60,7 @@ UnrealKey:
 #数据库有条件建议使用mysql
 Sql:
   type: sqlite   #sqlite或者mysql   mysql才需要配置下面的部分
-  dataBaseName: GenshinAttributesBackpack   #数据库名称
+  dataBaseName: GenshinRoleSystem   #数据库名称
   username: root  #账户名称
   password: root  #密码
   port: 3306  #端口
